@@ -2,6 +2,9 @@ from typing import Callable, Dict, List, Tuple
 import networkx as nx
 import numpy as np
 
+from src.strategies.initial_state import coin_flip_initializer, assign_strategies, Initializer
+from src.strategies.update_rule import imitate_best_neighbor, update_strategies, UpdateRule
+
 PAYOFF_MATRIX = {
     (1, 1): (3, 3),  # Both cooperate
     (1, 0): (0, 5),  # Cooperate vs. Defect
@@ -79,6 +82,6 @@ def evolutionary_game_round(
     update_strategies(G, payoffs, update_rule, seed)
 
 # Example usage
-G = nx.read_edgelist('facebook_combined.txt', nodetype=int)
-evolutionary_game_round(G, coin_flip_initializer, imitate_best_neighbor, seed=42)
-print("Updated strategies:", nx.get_node_attributes(G, "strategy"))
+# G = nx.read_edgelist('data/facebook_combined.txt', nodetype=int)
+# evolutionary_game_round(G, coin_flip_initializer, imitate_best_neighbor, seed=42)
+# print("Updated strategies:", nx.get_node_attributes(G, "strategy"))
