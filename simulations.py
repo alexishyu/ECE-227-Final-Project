@@ -1,6 +1,4 @@
-from typing import Callable, Dict, List, Tuple
 import networkx as nx
-import numpy as np
 import matplotlib.pyplot as plt
 from collections import Counter
 
@@ -12,8 +10,8 @@ from src.game.game_play import evolutionary_game_round
 
 
 if __name__ == "__main__":
-    data = 'facebook'  # Change to 'epinion' for the Epinions dataset
-    
+    data = 'epinion'  # Change to 'epinion' for the Epinions dataset
+
     if data == 'facebook':
         G = nx.read_edgelist('data/facebook_combined.txt', nodetype=int)
     elif data == 'epinion':
