@@ -6,18 +6,20 @@ from collections import Counter
 
 from utils.load_dataset import load_epinions
 from src.strategies.initial_state import coin_flip_initializer, assign_strategies
-from src.strategies.update_rule import imitate_best_neighbor
+from src.strategies.update_rule import imitate_best_neighbor, trust_aware_update
 from src.game.game_play import evolutionary_game_round
 
 
 
 if __name__ == "__main__":
-    data = 'facebook'  # Change to 'epinion' for the Epinions dataset
+    data = 'epinion'  # Change to 'epinion' for the Epinions dataset
     
     if data == 'facebook':
         G = nx.read_edgelist('data/facebook_combined.txt', nodetype=int)
+        update_rule = imitate_best_neighbor
     elif data == 'epinion':
-        G = load_epinions('data/epinion/soc-sign-epinions.txt', directed=False)
+        G = load_epinions('data/epinion/soc-sign-epinions.txt', directed=True)
+        update_rule = trust_aware_update
 
     num_iterations = 10
     cooperator_fractions = []
@@ -36,7 +38,7 @@ if __name__ == "__main__":
 
     for i in range(num_iterations):
         # Play one round and update strategies
-        evolutionary_game_round(G, lambda G, rng: nx.get_node_attributes(G, "strategy"), imitate_best_neighbor, seed=42+i)
+        evolutionary_game_round(G, lambda G, rng: nx.get_node_attributes(G, "strategy"), update_rule, seed=42+i)
 
         # Record fraction of cooperators
         strategies = nx.get_node_attributes(G, "strategy")

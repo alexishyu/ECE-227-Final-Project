@@ -72,6 +72,54 @@ def imitate_best_neighbor(
         new_strat[u] = G.nodes[best]["strategy"]
     return new_strat
 
+def trust_aware_update(
+    G: nx.Graph,               # works for DiGraph or Graph
+    payoffs: PayoffMap,
+    rng: np.random.Generator
+) -> Dict[int, Strategy]:
+
+    """
+    Strategy update that respects signed trust edges.
+
+    For each node u:
+      1. Consider u itself and every neighbour v (out-neighbour on DiGraph,
+         or neighbor on Graph) with attribute 'sign' (+1 trust, -1 distrust).
+      2. Compute effective payoff:   s_uv * payoffs[v]
+      3. Pick the candidate(s) with the highest effective payoff.
+         Break ties uniformly at random.
+      4. If the chosen candidate v* is:
+           • u itself ........................... keep current strategy
+           • a trusted neighbour (sign = +1) .... adopt v*'s strategy
+           • a distrusted neighbour (sign = -1) . adopt the *opposite*
+                                                  of v*'s strategy
+    """
+    new_strat: Dict[int, Strategy] = {}
+
+    for u in G.nodes():
+        # build candidate list: (node, sign)
+        candidates = [(u, +1)]
+        for v in G[u]:              # <- works for Graph and DiGraph
+            s = G[u][v].get("sign", +1)
+            candidates.append((v, s))
+
+        # compute effective payoffs
+        eff = [s * payoffs[v] for v, s in candidates]
+        max_eff = max(eff)
+
+        # tie‐break uniformly
+        best_idxs = [i for i, val in enumerate(eff) if val == max_eff]
+        idx = rng.choice(best_idxs)
+        v_star, sign_uv = candidates[idx]
+
+        # assign new strategy
+        if v_star == u:
+            new_strat[u] = G.nodes[u]["strategy"]
+        else:
+            neigh_s = G.nodes[v_star]["strategy"]
+            new_strat[u] = neigh_s if sign_uv == +1 else 1 - neigh_s
+
+    return new_strat
+
 # Example usage
 # G = nx.read_edgelist('facebook_combined.txt', nodetype=int)
 # payoffs = {node: np.random.random() for node in G.nodes()}  # Dummy payoffs. Should be received from game logic.
