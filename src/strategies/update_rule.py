@@ -2,6 +2,8 @@
 Module for flexible strategy-update mechanisms in an evolutionary-game simulation on networks.
 Provides an abstraction for applying different update rules with the following strategies:
     - Imitate-best-neighbor
+    - Trust-aware update
+    - Fermi update
 '''
 from typing import Callable, Dict
 import networkx as nx
@@ -58,7 +60,7 @@ def imitate_best_neighbor(
     Returns:
         Dict[int, Strategy] : Mapping from node ID to new strategy.
     """
-    new_strat = {}
+    new_strat: Dict[int, Strategy] = {}
     for u in G.nodes():
         best = u
         best_pay = payoffs[u]
@@ -77,7 +79,6 @@ def trust_aware_update(
     payoffs: PayoffMap,
     rng: np.random.Generator
 ) -> Dict[int, Strategy]:
-
     """
     Strategy update that respects signed trust edges.
 
@@ -120,8 +121,61 @@ def trust_aware_update(
 
     return new_strat
 
+def fermi_update(
+    G: nx.Graph,
+    payoffs: PayoffMap,
+    rng: np.random.Generator
+) -> Dict[int, Strategy]:
+    """
+    Fermi update rule: each agent u selects one random neighbor v and adopts v's strategy
+    with probability given by the Fermi function
+        P(u adopts v's strategy) = 1 / (1 + exp[(payoff_u - payoff_v) / K])
+    where K > 0 is the "temperature" (noise) parameter. If u has no neighbors, it keeps its strategy.
+
+    Args:
+        G (nx.Graph) : The graph with strategy and payoff information.
+        payoffs (Dict[int, float]) : Mapping of node ID to total payoff.
+        rng (np.random.Generator) : Random generator for neighbor selection and probabilistic decision.
+
+    Returns:
+        Dict[int, Strategy] : Mapping from node ID to new strategy.
+    """
+    new_strat: Dict[int, Strategy] = {}
+    K = 0.1  # Fermi noise parameter; adjust as needed
+
+    for u in G.nodes():
+        neighbors = list(G.neighbors(u))
+        if not neighbors:
+            # No neighbors: keep current strategy
+            new_strat[u] = G.nodes[u]["strategy"]
+            continue
+
+        # Select a random neighbor v
+        v = rng.choice(neighbors)
+        payoff_u = payoffs[u]
+        payoff_v = payoffs[v]
+
+        # Compute adoption probability
+        x = (payoff_v - payoff_u) / K
+        # Numerically stable logistic
+        if x >= 0:
+            z = np.exp(-x)
+            prob = 1.0 / (1.0 + z)
+        else:
+            z = np.exp(x)
+            prob = z / (1.0 + z)
+
+
+        # Decide whether to adopt v's strategy
+        if rng.random() < prob:
+            new_strat[u] = G.nodes[v]["strategy"]
+        else:
+            new_strat[u] = G.nodes[u]["strategy"]
+
+    return new_strat
+
+
 # Example usage
 # G = nx.read_edgelist('facebook_combined.txt', nodetype=int)
 # payoffs = {node: np.random.random() for node in G.nodes()}  # Dummy payoffs. Should be received from game logic.
 # update_strategies(G, payoffs, imitate_best_neighbor, seed=42)
-# print("Updated strategies:", nx.get_node_attributes(G, "strategy"))
