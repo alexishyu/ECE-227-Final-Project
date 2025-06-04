@@ -9,12 +9,13 @@ import numpy as np
 
 # Type aliases for clarity
 Strategy = int  # 1 = Cooperate, 0 = Defect
-Initializer = Callable[[nx.Graph, np.random.Generator], Dict[int, Strategy]]
+Initializer = Callable[[nx.Graph, np.random.Generator, float], Dict[int, Strategy]]
 
 
 def assign_strategies(
     G: nx.Graph,
     initializer: Initializer,
+    p: float = 0.5,  # Probability of assigning strategy=1 (Cooperate)
     seed: int = None
 ) -> None:
     """
@@ -29,7 +30,7 @@ def assign_strategies(
         ValueError: If the initializer does not assign a strategy for every node.
     """
     rng = np.random.default_rng(seed)
-    strategy_map = initializer(G, rng)
+    strategy_map = initializer(G, rng, p)
 
     # Ensure complete coverage
     missing = set(G.nodes()) - set(strategy_map.keys())
