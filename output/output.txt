@@ -344,6 +344,75 @@ Iteration 18 Strategy Distribution: 31.53% cooperators, 68.47% defectors
 Iteration 19 Strategy Distribution: 31.52% cooperators, 68.48% defectors
 Iteration 20 Strategy Distribution: 31.53% cooperators, 68.47% defectors
 ----------------------------------------------------------------------------------------------------
+Running epinion with evolutionary_game_round, all_neighbors_trust_aware_update, initial coinflip p=0.25
+Iteration 0 Strategy Distribution: 24.96% cooperators, 75.04% defectors, Total: 131828
+Iteration 1 Strategy Distribution: 90.31% cooperators, 9.69% defectors
+Iteration 2 Strategy Distribution: 92.02% cooperators, 7.98% defectors
+Iteration 3 Strategy Distribution: 92.22% cooperators, 7.78% defectors
+Iteration 4 Strategy Distribution: 92.23% cooperators, 7.77% defectors
+Iteration 5 Strategy Distribution: 92.22% cooperators, 7.78% defectors
+Iteration 6 Strategy Distribution: 92.21% cooperators, 7.79% defectors
+Iteration 7 Strategy Distribution: 92.15% cooperators, 7.85% defectors
+Iteration 8 Strategy Distribution: 92.30% cooperators, 7.70% defectors
+Iteration 9 Strategy Distribution: 92.21% cooperators, 7.79% defectors
+Iteration 10 Strategy Distribution: 92.31% cooperators, 7.69% defectors
+Iteration 11 Strategy Distribution: 92.15% cooperators, 7.85% defectors
+Iteration 12 Strategy Distribution: 92.28% cooperators, 7.72% defectors
+Iteration 13 Strategy Distribution: 92.12% cooperators, 7.88% defectors
+Iteration 14 Strategy Distribution: 92.27% cooperators, 7.73% defectors
+Iteration 15 Strategy Distribution: 92.12% cooperators, 7.88% defectors
+Iteration 16 Strategy Distribution: 92.25% cooperators, 7.75% defectors
+Iteration 17 Strategy Distribution: 92.14% cooperators, 7.86% defectors
+Iteration 18 Strategy Distribution: 92.28% cooperators, 7.72% defectors
+Iteration 19 Strategy Distribution: 92.17% cooperators, 7.83% defectors
+Iteration 20 Strategy Distribution: 92.24% cooperators, 7.76% defectors
+----------------------------------------------------------------------------------------------------
+Running epinion with evolutionary_game_round, all_neighbors_trust_aware_update, initial coinflip p=0.5
+Iteration 0 Strategy Distribution: 49.84% cooperators, 50.16% defectors, Total: 131828
+Iteration 1 Strategy Distribution: 89.67% cooperators, 10.33% defectors
+Iteration 2 Strategy Distribution: 91.95% cooperators, 8.05% defectors
+Iteration 3 Strategy Distribution: 92.25% cooperators, 7.75% defectors
+Iteration 4 Strategy Distribution: 92.22% cooperators, 7.78% defectors
+Iteration 5 Strategy Distribution: 92.21% cooperators, 7.79% defectors
+Iteration 6 Strategy Distribution: 92.18% cooperators, 7.82% defectors
+Iteration 7 Strategy Distribution: 92.16% cooperators, 7.84% defectors
+Iteration 8 Strategy Distribution: 92.29% cooperators, 7.71% defectors
+Iteration 9 Strategy Distribution: 92.21% cooperators, 7.79% defectors
+Iteration 10 Strategy Distribution: 92.28% cooperators, 7.72% defectors
+Iteration 11 Strategy Distribution: 92.17% cooperators, 7.83% defectors
+Iteration 12 Strategy Distribution: 92.26% cooperators, 7.74% defectors
+Iteration 13 Strategy Distribution: 92.17% cooperators, 7.83% defectors
+Iteration 14 Strategy Distribution: 92.25% cooperators, 7.75% defectors
+Iteration 15 Strategy Distribution: 92.16% cooperators, 7.84% defectors
+Iteration 16 Strategy Distribution: 92.26% cooperators, 7.74% defectors
+Iteration 17 Strategy Distribution: 92.16% cooperators, 7.84% defectors
+Iteration 18 Strategy Distribution: 92.26% cooperators, 7.74% defectors
+Iteration 19 Strategy Distribution: 92.18% cooperators, 7.82% defectors
+Iteration 20 Strategy Distribution: 92.25% cooperators, 7.75% defectors
+----------------------------------------------------------------------------------------------------
+Running epinion with evolutionary_game_round, all_neighbors_trust_aware_update, initial coinflip p=0.75
+Iteration 0 Strategy Distribution: 75.04% cooperators, 24.96% defectors, Total: 131828
+Iteration 1 Strategy Distribution: 90.77% cooperators, 9.23% defectors
+Iteration 2 Strategy Distribution: 92.02% cooperators, 7.98% defectors
+Iteration 3 Strategy Distribution: 92.27% cooperators, 7.73% defectors
+Iteration 4 Strategy Distribution: 92.22% cooperators, 7.78% defectors
+Iteration 5 Strategy Distribution: 92.20% cooperators, 7.80% defectors
+Iteration 6 Strategy Distribution: 92.21% cooperators, 7.79% defectors
+Iteration 7 Strategy Distribution: 92.18% cooperators, 7.82% defectors
+Iteration 8 Strategy Distribution: 92.28% cooperators, 7.72% defectors
+Iteration 9 Strategy Distribution: 92.16% cooperators, 7.84% defectors
+Iteration 10 Strategy Distribution: 92.27% cooperators, 7.73% defectors
+Iteration 11 Strategy Distribution: 92.17% cooperators, 7.83% defectors
+Iteration 12 Strategy Distribution: 92.28% cooperators, 7.72% defectors
+Iteration 13 Strategy Distribution: 92.16% cooperators, 7.84% defectors
+Iteration 14 Strategy Distribution: 92.22% cooperators, 7.78% defectors
+Iteration 15 Strategy Distribution: 92.15% cooperators, 7.85% defectors
+Iteration 16 Strategy Distribution: 92.23% cooperators, 7.77% defectors
+Iteration 17 Strategy Distribution: 92.16% cooperators, 7.84% defectors
+Iteration 18 Strategy Distribution: 92.24% cooperators, 7.76% defectors
+Iteration 19 Strategy Distribution: 92.19% cooperators, 7.81% defectors
+Iteration 20 Strategy Distribution: 92.27% cooperators, 7.73% defectors
+----------------------------------------------------------------------------------------------------
 Running epinion with game_round_trust, imitate_best_neighbor, initial coinflip p=0.25
 Iteration 0 Strategy Distribution: 24.96% cooperators, 75.04% defectors, Total: 131828
 Iteration 1 Strategy Distribution: 58.83% cooperators, 41.17% defectors
@@ -550,3 +619,72 @@ Iteration 17 Strategy Distribution: 79.67% cooperators, 20.33% defectors
 Iteration 18 Strategy Distribution: 78.87% cooperators, 21.13% defectors
 Iteration 19 Strategy Distribution: 78.86% cooperators, 21.14% defectors
 Iteration 20 Strategy Distribution: 79.43% cooperators, 20.57% defectors
+----------------------------------------------------------------------------------------------------
+Running epinion with game_round_trust, all_neighbors_trust_aware_update, initial coinflip p=0.25
+Iteration 0 Strategy Distribution: 24.96% cooperators, 75.04% defectors, Total: 131828
+Iteration 1 Strategy Distribution: 91.95% cooperators, 8.05% defectors
+Iteration 2 Strategy Distribution: 89.89% cooperators, 10.11% defectors
+Iteration 3 Strategy Distribution: 90.84% cooperators, 9.16% defectors
+Iteration 4 Strategy Distribution: 90.44% cooperators, 9.56% defectors
+Iteration 5 Strategy Distribution: 90.61% cooperators, 9.39% defectors
+Iteration 6 Strategy Distribution: 90.44% cooperators, 9.56% defectors
+Iteration 7 Strategy Distribution: 90.58% cooperators, 9.42% defectors
+Iteration 8 Strategy Distribution: 90.62% cooperators, 9.38% defectors
+Iteration 9 Strategy Distribution: 90.51% cooperators, 9.49% defectors
+Iteration 10 Strategy Distribution: 90.54% cooperators, 9.46% defectors
+Iteration 11 Strategy Distribution: 90.54% cooperators, 9.46% defectors
+Iteration 12 Strategy Distribution: 90.56% cooperators, 9.44% defectors
+Iteration 13 Strategy Distribution: 90.56% cooperators, 9.44% defectors
+Iteration 14 Strategy Distribution: 90.57% cooperators, 9.43% defectors
+Iteration 15 Strategy Distribution: 90.56% cooperators, 9.44% defectors
+Iteration 16 Strategy Distribution: 90.54% cooperators, 9.46% defectors
+Iteration 17 Strategy Distribution: 90.57% cooperators, 9.43% defectors
+Iteration 18 Strategy Distribution: 90.52% cooperators, 9.48% defectors
+Iteration 19 Strategy Distribution: 90.59% cooperators, 9.41% defectors
+Iteration 20 Strategy Distribution: 90.54% cooperators, 9.46% defectors
+----------------------------------------------------------------------------------------------------
+Running epinion with game_round_trust, all_neighbors_trust_aware_update, initial coinflip p=0.5
+Iteration 0 Strategy Distribution: 49.84% cooperators, 50.16% defectors, Total: 131828
+Iteration 1 Strategy Distribution: 91.02% cooperators, 8.98% defectors
+Iteration 2 Strategy Distribution: 90.28% cooperators, 9.72% defectors
+Iteration 3 Strategy Distribution: 90.70% cooperators, 9.30% defectors
+Iteration 4 Strategy Distribution: 90.50% cooperators, 9.50% defectors
+Iteration 5 Strategy Distribution: 90.58% cooperators, 9.42% defectors
+Iteration 6 Strategy Distribution: 90.48% cooperators, 9.52% defectors
+Iteration 7 Strategy Distribution: 90.54% cooperators, 9.46% defectors
+Iteration 8 Strategy Distribution: 90.59% cooperators, 9.41% defectors
+Iteration 9 Strategy Distribution: 90.52% cooperators, 9.48% defectors
+Iteration 10 Strategy Distribution: 90.55% cooperators, 9.45% defectors
+Iteration 11 Strategy Distribution: 90.50% cooperators, 9.50% defectors
+Iteration 12 Strategy Distribution: 90.56% cooperators, 9.44% defectors
+Iteration 13 Strategy Distribution: 90.55% cooperators, 9.45% defectors
+Iteration 14 Strategy Distribution: 90.57% cooperators, 9.43% defectors
+Iteration 15 Strategy Distribution: 90.59% cooperators, 9.41% defectors
+Iteration 16 Strategy Distribution: 90.52% cooperators, 9.48% defectors
+Iteration 17 Strategy Distribution: 90.61% cooperators, 9.39% defectors
+Iteration 18 Strategy Distribution: 90.50% cooperators, 9.50% defectors
+Iteration 19 Strategy Distribution: 90.57% cooperators, 9.43% defectors
+Iteration 20 Strategy Distribution: 90.57% cooperators, 9.43% defectors
+----------------------------------------------------------------------------------------------------
+Running epinion with game_round_trust, all_neighbors_trust_aware_update, initial coinflip p=0.75
+Iteration 0 Strategy Distribution: 75.04% cooperators, 24.96% defectors, Total: 131828
+Iteration 1 Strategy Distribution: 90.21% cooperators, 9.79% defectors
+Iteration 2 Strategy Distribution: 90.69% cooperators, 9.31% defectors
+Iteration 3 Strategy Distribution: 90.44% cooperators, 9.56% defectors
+Iteration 4 Strategy Distribution: 90.63% cooperators, 9.37% defectors
+Iteration 5 Strategy Distribution: 90.56% cooperators, 9.44% defectors
+Iteration 6 Strategy Distribution: 90.50% cooperators, 9.50% defectors
+Iteration 7 Strategy Distribution: 90.55% cooperators, 9.45% defectors
+Iteration 8 Strategy Distribution: 90.59% cooperators, 9.41% defectors
+Iteration 9 Strategy Distribution: 90.49% cooperators, 9.51% defectors
+Iteration 10 Strategy Distribution: 90.57% cooperators, 9.43% defectors
+Iteration 11 Strategy Distribution: 90.52% cooperators, 9.48% defectors
+Iteration 12 Strategy Distribution: 90.62% cooperators, 9.38% defectors
+Iteration 13 Strategy Distribution: 90.56% cooperators, 9.44% defectors
+Iteration 14 Strategy Distribution: 90.57% cooperators, 9.43% defectors
+Iteration 15 Strategy Distribution: 90.52% cooperators, 9.48% defectors
+Iteration 16 Strategy Distribution: 90.57% cooperators, 9.43% defectors
+Iteration 17 Strategy Distribution: 90.57% cooperators, 9.43% defectors
+Iteration 18 Strategy Distribution: 90.52% cooperators, 9.48% defectors
+Iteration 19 Strategy Distribution: 90.55% cooperators, 9.45% defectors
+Iteration 20 Strategy Distribution: 90.57% cooperators, 9.43% defectors
