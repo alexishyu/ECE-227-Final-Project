@@ -174,7 +174,51 @@ def fermi_update(
 
     return new_strat
 
-
+def all_neighbors_trust_aware_update(
+    G: nx.Graph,               # works for DiGraph or Graph
+    payoffs: PayoffMap,
+    rng: np.random.Generator
+) -> Dict[int, Strategy]:
+    """
+    Strategy update that considers all neighbors' payoffs weighted by trust relationships.
+    
+    For each node u:
+    1. Calculate weighted sum of all neighbors' payoffs using trust signs as weights
+       (includes node's own payoff with positive weight)
+    2. If weighted sum is positive, adopt cooperative strategy (1)
+    3. If weighted sum is negative, adopt defection strategy (0)
+    4. If exactly zero, maintain current strategy with 50% probability or flip it
+    
+    Args:
+        G (nx.Graph): The graph with strategy information and signed edges
+        payoffs (Dict[int, float]): Mapping of node ID to total payoff
+        rng (np.random.Generator): Random generator for tie-breaking
+        
+    Returns:
+        Dict[int, Strategy]: Mapping from node ID to new strategy
+    """
+    new_strat = {}
+    
+    for u in G.nodes():
+        # Start with node's own contribution
+        weighted_payoff_sum = payoffs[u]
+        
+        # Add weighted payoffs from all neighbors
+        for v in G[u]:
+            sign = G[u][v].get("sign", +1)  # Default to trust if sign not specified
+            weighted_payoff_sum += sign * payoffs[v]
+        
+        # Determine strategy based on weighted sum
+        if weighted_payoff_sum > 0:
+            new_strat[u] = 1  # Cooperate
+        elif weighted_payoff_sum < 0:
+            new_strat[u] = 0  # Defect
+        else:  # weighted_payoff_sum == 0
+            # Tie-breaking: keep current with 50% probability or flip it
+            current_strat = G.nodes[u]["strategy"] 
+            new_strat[u] = current_strat if rng.random() < 0.5 else 1 - current_strat
+    
+    return new_strat
 # Example usage
 # G = nx.read_edgelist('facebook_combined.txt', nodetype=int)
 # payoffs = {node: np.random.random() for node in G.nodes()}  # Dummy payoffs. Should be received from game logic.
