@@ -15,7 +15,7 @@ Initializer = Callable[[nx.Graph, np.random.Generator, float], Dict[int, Strateg
 def assign_strategies(
     G: nx.Graph,
     initializer: Initializer,
-    p: float = 0.5,  # Probability of assigning strategy=1 (Cooperate)
+    p: float = 0.5,
     seed: int = None
 ) -> None:
     """
@@ -24,6 +24,7 @@ def assign_strategies(
     Args: 
         G (nx.Graph) : The networkx graph whose nodes will receive strategy assignments.
         initializer (Initializer) : A function taking (G, rng) and returning a dict mapping node IDs to strategies.
+        p (float) : Probability of assigning strategy=1 (Cooperate) to each node (default: 0.5).
         seed (int) : Seed for the random number generator for perfect reproducibility (default: None).
 
     Raises:    

@@ -120,28 +120,26 @@ def evolutionary_game_round(
 ) -> None:
     """
     Conducts one round of the evolutionary game, which includes:
-    1. Setting up the network by assigning strategies to nodes.
-    2. Playing the Prisoner's Dilemma game with every neighbor.
-    3. Updating strategies based on the game outcomes and chosen update rule.
+    1. Playing the Prisoner's Dilemma game with every neighbor.
+    2. Updating strategies based on the game outcomes and chosen update rule.
 
     Args:
         G (nx.Graph) : The network graph to run the evolutionary game on.
-        initializer (Initializer) : The function used to initialize the strategies of the nodes.
         update_rule (UpdateRule) : The function used to update the strategies based on the payoffs.
         seed (int) : Seed for random number generation for reproducibility (default: None).
     """
 
-    # Step 2: Play the Prisoner's Dilemma game with each pair of neighbors
+    # Step 1: Play the Prisoner's Dilemma game with each pair of neighbors
     game_results = play_prisoners_dilemma(G, seed)
     
-    # Step 3: Calculate accumulated payoffs for each node
+    # Step 2: Calculate accumulated payoffs for each node
     payoffs = {node: 0.0 for node in G.nodes()}
     
     for (u, v), (payoff_u, payoff_v) in game_results.items():
         payoffs[u] += payoff_u
         payoffs[v] += payoff_v
 
-    # Step 4: Update the strategies based on the payoffs
+    # Step 3: Update the strategies based on the payoffs
     update_strategies(G, payoffs, update_rule, seed)
 
 # Example usage

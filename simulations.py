@@ -30,7 +30,7 @@ if __name__ == "__main__":
         elif dataset == 'epinion':
             G = load_epinions('data/epinion/soc-sign-epinions.txt', directed=True)
             game_types = [evolutionary_game_round, game_round_trust]  # Use both games for Epinions
-            update_rules = [imitate_best_neighbor, fermi_update, trust_aware_update, all_neighbors_trust_aware_update]  # Use all three update rules for Epinions
+            update_rules = [imitate_best_neighbor, fermi_update, trust_aware_update, all_neighbors_trust_aware_update]  # Use all four update rules for Epinions
 
 
         for game_type in game_types:
