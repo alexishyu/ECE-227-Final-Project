@@ -55,7 +55,7 @@ if __name__ == "__main__":
                     os.makedirs(output_path, exist_ok=True)
 
                     print(f"Iteration 0 Strategy Distribution: {strategy_counts[1]/total_count:.2%} cooperators, {strategy_counts[0]/total_count:.2%} defectors, Total: {total_count}")
-                    nx.write_gexf(graph, f"{output_path}/{data}_iter_0.gexf")
+                    nx.write_gexf(graph, f"{output_path}/{dataset}_iter_0.gexf")
 
 
                     for i in range(num_iterations):
