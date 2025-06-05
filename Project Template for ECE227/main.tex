@@ -1,0 +1,88 @@
+\documentclass[journal]{IEEEtran}
+% \documentclass[12pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb} 
+% \usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{kpfonts}    % for nice fonts
+\usepackage{microtype} 
+\usepackage{booktabs}   % for nice tables
+\usepackage{bm}         % for bold math
+\usepackage{listings}   % for inserting code
+\usepackage{verbatim}   % useful for program listings
+\usepackage{color} 
+\usepackage[colorlinks=true]{hyperref}
+% use for hypertext
+% \usepackage[colorinlistoftodos]{todonotes}
+\usepackage{natbib}
+
+\usepackage{xcolor}
+\usepackage{subcaption}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{example}{Example}
+
+\usepackage{lipsum}
+
+\begin{document}
+
+\title{Title for \textit{Project} ECE 227}
+        
+    \author{
+    \IEEEauthorblockN{Author 1},
+    \IEEEauthorblockA{\textit{Department of [YOUR DEPARTMENT]} \\
+    \textit{UC San Diego}\\
+    mail1@mail.com}
+
+    \and
+    
+    \IEEEauthorblockN{Author 2},
+    \IEEEauthorblockA{\textit{Department of [YOUR DEPARTMENT]} \\
+    \textit{UC San Diego}\\
+    mail2@mail.com}
+    \and
+    
+    \IEEEauthorblockN{Author 3},
+    \IEEEauthorblockA{\textit{Department of [YOUR DEPARTMENT]} \\
+    \textit{UC San Diego}\\
+    mail3@mail.com}
+    }
+    
+\maketitle
+%-Title
+%+Abstract
+\begin{abstract}
+\lipsum[1]
+\end{abstract}
+%-Abstract
+
+\captionsetup{font=footnotesize} % or small
+
+
+\input{00_introduction}         
+\input{01_model}
+\input{02_data}
+\input{03_simulations}
+\input{04_future-work}
+
+\clearpage
+\bibliographystyle{apalike}
+\bibliography{aguiar}
+
+\newpage
+
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{figures/raman.jpg}}]{Raman Ebrahimi} earned his B.Sc. degrees in Physics and Industrial Engineering from Sharif University of Technology in 2022. His thesis was on the spread of (Dis)Information over the Networks. He received his M.S. degree in March 2025 and his thesis, titled ``From Games to Predictions: Strategic Behavior in Networks and Classification'' focused on applications of game theory and network science in modeling agent behavior. He is now working towards his Ph.D. in Electrical and Computer Engineering at the University of California, San Diego with a special focus on machine learning and data science. His research focuses on game theory, network economics, games on networks, and computational social science. 
+\end{IEEEbiography}
+\vspace{-1in}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{figures/massimo.jpg}}] {Massimo Franceschetti} graduated in computer engineering from the University of Naples in 1997. He received M.S. and Ph.D. degrees in electrical engineering from the California Institute of Technology in 1999, and 2003 respectively. His doctoral thesis, entitled ``Wireless Networks, from Collective Behavior to the Physics of Propagation'' was awarded the Wilts Prize for best thesis in electrical engineering at Caltech in 2003. He also received the 2000 Walker von Brimer award for outstanding research at Caltech. Franceschetti has held visiting positions at the Vrije Universiteit Amsterdam in the Netherlands, the Ecole Polytechnique Federale de Lausanne in Switzerland, and the University of Trento in Italy. Before joining UCSD, he was a post-doctoral scholar at University of California at Berkeley for two years. 
+\end{IEEEbiography}
+
+\end{document}
