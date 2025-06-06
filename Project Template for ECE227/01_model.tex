@@ -1,13 +1,11 @@
 \section{Model}
-\begin{figure*}[ht]
-    \centering
-    \includegraphics[width=0.3\linewidth]{figures/Calls_network.png}
-    \includegraphics[width=0.3\linewidth]{figures/FB_network.png}
-    \includegraphics[width=0.3\linewidth]{figures/ff.png}
-    \caption{Figure example}
-    \label{fig:enter-label}
-\end{figure*}
 
+In this paper, we analyze the evolution of the proportion of cooperators in the network over time when playing the prisoner's dilemma game. The initial state assigns the node’s initial strategy with a Bernoulli (0.5) distribution, giving an equal chance between cooperation and defection. Each node will play the game with each of its neighbors, will then update its strategy (cooperator or defector), and then repeat the process. We tested this cycle out with different update strategy rules and Prisoner's Dilemma rules. 
 
-The first network we looked at was the Facebook dataset (SNAP). This network consists of anonymized ego-networks extracted from Facebook, where each node represents a user and edges represent friendship links. Using this as our base, we assigned each node’s initial strategy with a Bernoulli (0.5) distribution, giving an equal chance between cooperation and defection. Then, after every game iteration playing Prisoner’s Dilemma, there is an update strategy where each node will look at all its neighbors and will adopt the more successful strategy. 
-The next network we looked at was the Epinions social network dataset (SNAP), a directed “who-trusts-whom” graph from the Epinions.com review site, where each edge indicates that one user has marked another as trusted or not trusted. 
+\subsection{Strategy Update Rules}
+KARL FILL OUTS THIS SECTION
+
+\subsection{Game Rules}
+The first implementation of the game models a standard Prisoner's Dilemma on a network. In the game a node will iterate over all edges (u,v) (ensuring each unordered pair is considered just once) and looks up the current strategies of u and v. Using a fixed payoff matrix, where mutual cooperation yields (3,3), defection against cooperation yields (5,0), mutual defection yields (1,1), and cooperation against defection yields (0,5); it computes and stores the pairwise payoffs. Once all neighbor‐to‐neighbor payoffs are collected, the payoffs for each node will be summed up, giving us the final payoff matrix.
+
+The second implementation was only implemented on the Epinions' data set and had the nodes consider if they trusted the node they were playing the game with to determine their strategy. Once paired up, if the node trusts the other node, there is a 70\% chance that the node will switch its strategy to cooperation. This also applies conversely, with the node having a 70\% chance that the node will switch to defect if it doesn't trust the other node. 
