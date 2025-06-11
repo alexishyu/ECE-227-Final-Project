@@ -1,12 +1,13 @@
 \section{Simulations and Numerical Experiments}
-\begin{figure*}[ht]
-    \centering
-    \includegraphics[width=0.4\linewidth]{figures/tw.png}
-    \includegraphics[width=0.4\linewidth]{figures/SMS_network.png}
-    \caption{Figure example}
-    \label{fig:enter-label}
-\end{figure*}
-\lipsum[9-12]
+
+We conducted evolutionary Prisoner’s Dilemma simulations on both networks, varying the initial state of Bernoulli for the starting strategies \(p \in \{0.25, 0.50, 0.75\}\). For each combination of network and \(p\), we compared two standard payoff‐based update rules (imitate‐best‐neighbor and Fermi). Then for every combination of the Epinions' data set, we compared the trust update rules (trust aware update and all neighbor trust).  In every experiment, we recorded the final fraction of cooperators and the number of iterations required for the dynamics to converge.
+
+
+\subsection{Intuition}
+Prior to conducting our simulations, we formulated the following expectations. First, we hypothesized that under standard payoff‐based update rules (imitate‐best‐neighbor and Fermi), the dense, highly clustered Facebook network would sustain higher levels of cooperation than the sparser, more hierarchical Epinions network. Second, we expected that introducing trust-awareness into the update process would uniformly boost cooperative behavior. Finally, we expected that an all‐neighbor trust aggregation rule—by leveraging the full spectrum of positive and negative ties—would produce the most robust and rapid convergence to cooperation across both network topologies.
+
+
+\section{Results}
 
 \begin{landscape}
 \begin{table}[p]
@@ -106,3 +107,11 @@
   \end{tabular}
 \end{table}
 \end{landscape}
+
+\subsection{Cooperation Levels}
+Table~I presents the final fraction of cooperators under three temptation parameters \(p\) for both the Facebook and Epinions networks across five update rules. Under standard \emph{imitate‐best‐neighbor}, Facebook transitions from 0\% cooperation at \(p=0.25\) to 95.8\% at \(p=0.75\), whereas Epinions peaks at only 27.4\%. The Fermi rule yields similar behavior: Facebook reaches 94\% cooperation at high \(p\), while Epinions remains below 31\%. When we apply trust‐aware versions of both imitation and Fermi updates on Epinions, final cooperation rises sharply into the 62–82\% range across all \(p\). Finally, the all‐neighbor‐trust rule drives cooperation above 90\% on Epinions irrespective of \(p\), demonstrating near‐universal cooperation under trust-aware updates.
+
+\subsection{Convergence Speed}
+Standard update rules on Epinions require up to 20 iterations to stabilize, reflecting slow cluster formation on its sparse topology. In contrast, trust update rules including both pairwise trust updates and the all‐neighbor‐trust converge in under 10 iterations (often within 5–8), highlighting trust’s ability to accelerate consensus. Facebook’s dense structure enables faster convergence under standard rules (3–5 iterations). 
+
+
