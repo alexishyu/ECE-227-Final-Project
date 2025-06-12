@@ -1,5 +1,14 @@
 \section{Conclusion}
-\lipsum[13]
+Our study confirms that there is a connection between network structure and the update rules used in the prisoner's dilemma, that determines the dynamics of cooperation. 
+While the classical \emph{imitate-best-neighbor} and \emph{Fermi} update rules are effective enough in encouraging cooperation in highly clustered networks like Facebook, under favorable initial conditions,
+they are not sufficient to maintain cooperation in sparse networks like Epinions. By contrast, the \emph{trust-aware} update rules, which incorporate trust relationships, 
+substantially enhance cooperation levels and convergence speed in the Epinions network.
+Most notably, the \emph{all-neighbor-trust} update rule achieves over 90\% cooperation across all initial conditions with relatively fast convergence, thus demonstrating the power of trust in fostering cooperation.
+These findings suggest that real social networks, may require leveraging trust relationships to maintain cooperation as well as to overcome obstacles presented by sparse network structures.
 
 \section{Future works}
-\lipsum[14]
+Future work could proceed in several directions to further explore the dynamics of cooperation in the prisoner's dilemma on social networks.
+One potential direction is to introduce adaptive rewiring mechanisms where agents can change their connections and trust based on past interactions similar to the work by Rezaei and Kirley \cite{RezaeiKirley2012}.
+Next, we could investigate the impact of different trust models, such as those with weighted trust or trust decay based on length of connection and interaction history, to see how the dynamics of trust affect the dynamics of cooperation.
+Another direction is to see how a varying payoff matrix affects the dynamics, such as with different reward structures for cooperation and defection or a payoff dependent on a cost function that changes over time.
+Finally, we could explore the experiments on more real social networks, such as Twitter, Reddit, or GitHub, to see how different real-world structures affect the dynamics.
