@@ -3,8 +3,35 @@
 In this paper, we analyze the evolution of the proportion of cooperators in the network over time when playing the prisoner's dilemma game. The initial state assigns the node’s initial strategy with a Bernoulli (\(p\)) distribution, giving a \(p\) chance of cooperation and \(1-p\) chance of defection. Each node will play the game with each of its neighbors, will then update its strategy (cooperator or defector), and then repeat the process. We tested this cycle out with different update strategy rules, Prisoner's Dilemma rules, and \(p\) values. 
 
 \subsection{Strategy Update Rules}
-KARL FILL OUTS THIS SECTION
 
+Strategy revision is handled by the generic \texttt{update\_strategies} routine, which takes as input the network $G$, a payoff map $\pi:V\to\mathbb{R}$, an \texttt{UpdateRule} callback, and a random seed.  At each iteration, every node computes a new strategy in one of four ways:
+
+\medskip
+\noindent\textbf{Imitate–Best–Neighbor.}
+Each node $u$ compares its own accumulated payoff $\pi_u$ against those of its neighbors.  It adopts the strategy of the neighbor (or itself) with the highest payoff, breaking ties uniformly at random.
+
+\medskip
+\noindent\textbf{Trust–Aware Update.}
+On graphs with signed edges ($s_{uv}\in\{+1,-1\}$), each node $u$ and its neighbors $v$ compute an \emph{effective payoff} $s_{uv}\,\pi_v$.  The candidate with the maximum effective payoff is chosen; if it is trusted ($s_{uv}=+1$), $u$ copies its strategy, and if it is distrusted ($s_{uv}=-1$), $u$ adopts the opposite strategy.  Self‐comparison preserves the current strategy.
+
+\medskip
+\noindent\textbf{Fermi Update.}
+Each node $u$ selects a random neighbor $v$ and adopts $v$’s strategy with probability
+\[
+  P(u\to v)\;=\;\frac{1}{1+\exp\bigl[(\pi_u-\pi_v)/K\bigr]}\,,
+\]
+where $K>0$ is a temperature parameter.  Otherwise, $u$ retains its current strategy.
+
+\medskip
+\noindent\textbf{All–Neighbors Trust–Aware Update.}
+Each node $u$ computes the weighted sum
+\[
+  S_u \;=\;\pi_u \;+\;\sum_{v\in N(u)} s_{uv}\,\pi_v\,.
+\]
+If $S_u>0$, $u$ cooperates; if $S_u<0$, it defects; and if $S_u=0$, it flips or retains its strategy with equal probability.  
+
+\medskip
+These four rules capture a spectrum from pure payoff maximization to locally aggregated, trust‐mediated imitation, and are used interchangeably to study the emergence of cooperation under different network and behavioral assumptions. 
 \subsection{Game Rules}
 The first implementation of the game models a standard Prisoner's Dilemma on a network. In the game a node will iterate over all edges (u,v) (ensuring each unordered pair is considered just once) and looks up the current strategies of u and v. Using a fixed payoff matrix, where mutual cooperation yields (3,3), defection against cooperation yields (5,0), mutual defection yields (1,1), and cooperation against defection yields (0,5); it computes and stores the pairwise payoffs. Once all neighbor‐to‐neighbor payoffs are collected, the payoffs for each node will be summed up, giving us the final payoff matrix.
 

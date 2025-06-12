@@ -4,6 +4,7 @@ Provides an abstraction for applying different update rules with the following s
     - Imitate-best-neighbor
     - Trust-aware update
     - Fermi update
+    - All-neighbors trust-aware update
 '''
 from typing import Callable, Dict
 import networkx as nx
