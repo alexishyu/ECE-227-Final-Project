@@ -23,7 +23,7 @@ At each iteration, the code:
 4. Saves intermediate GEXF snapshots (every _save_interval_ iterations) for visualization in Gephi.
 5. Exports a final PNG plot showing “Fraction of Cooperators vs. Iteration”.
 
-**Project Paper can be found [here]()**
+**Project Paper can be found [here](https://github.com/alexishyu/ECE-227-Final-Project/blob/main/ECE227FinalPaper.pdf)**
 
 ## Prerequisites
 - **Python 3.9+**
